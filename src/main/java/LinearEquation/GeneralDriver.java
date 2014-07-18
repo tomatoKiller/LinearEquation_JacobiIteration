@@ -8,6 +8,9 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
+
+
+import org.apache.hadoop.mapreduce.lib.input.NLineInputFormat;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
@@ -17,6 +20,7 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
 import java.net.URI;
+import java.util.concurrent.TimeUnit;
 
 enum PrecisionRequire {
     ITEM
@@ -36,6 +40,7 @@ public class GeneralDriver extends Configured implements Tool {
 
 
         int round = 0;
+        long start = TimeUnit.SECONDS.convert(System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 
         while (true) {
 
@@ -44,6 +49,8 @@ public class GeneralDriver extends Configured implements Tool {
             job.setJarByClass(GeneralDriver.class);
 
             job.setInputFormatClass(TextInputFormat.class);
+//            job.setInputFormatClass(NLineInputFormat.class);
+//            NLineInputFormat.setNumLinesPerSplit(job, 5);
             job.setOutputFormatClass(TextOutputFormat.class);
 
             job.setMapperClass(GeneralMap.class);
@@ -89,6 +96,9 @@ public class GeneralDriver extends Configured implements Tool {
             round++;
 
         }
+
+        long end = TimeUnit.SECONDS.convert(System.currentTimeMillis(), TimeUnit.MILLISECONDS);
+        System.out.println("total time = " + (end - start) + "s" );
         return  0;
     }
 }

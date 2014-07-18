@@ -10,6 +10,15 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar:///opt/hadoop-0.20.2-cdh3u6/hadoop-core-0.20.2-cdh3u6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-core:0.20.2" level="project" />
     <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.2" level="project" />
     <orderEntry type="library" name="Maven: xmlenc:xmlenc:0.52" level="project" />
@@ -32,6 +41,28 @@
     <orderEntry type="library" name="Maven: net.java.dev.jets3t:jets3t:0.7.1" level="project" />
     <orderEntry type="library" name="Maven: net.sf.kosmosfs:kfs:0.3" level="project" />
     <orderEntry type="library" name="Maven: hsqldb:hsqldb:1.8.0.10" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar:///opt/hadoop-0.20.2-cdh3u6/lib/log4j-1.2.15.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file:///opt/hadoop-0.20.2-cdh3u6/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file:///opt/hadoop-0.20.2-cdh3u6/lib" />
+        </SOURCES>
+        <jarDirectory url="file:///opt/hadoop-0.20.2-cdh3u6/lib" recursive="false" />
+        <jarDirectory url="file:///opt/hadoop-0.20.2-cdh3u6/lib" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
   </component>
 </module>
 
