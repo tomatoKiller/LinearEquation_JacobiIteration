@@ -1,2 +1,4 @@
-output
-target
+input/
+output/
+target/
+*.jar
