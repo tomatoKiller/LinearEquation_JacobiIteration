@@ -38,7 +38,7 @@ public class GeneralDriver extends Configured implements Tool {
     public static void main(String[] args) throws Exception {
 //        String ConfXml = GeneralDriver.class.getClassLoader().getResource("linear_equation.xml").getPath();
 //        int res = ToolRunner.run(new Configuration(), new GeneralDriver(), AnalyzeXml(ConfXml));
-        int res = ToolRunner.run(new Configuration(), new GeneralDriver(), AnalyzeXml("./linear_equation.xml"));
+        int res = ToolRunner.run(new Configuration(), new GeneralDriver(), args);
 
         System.exit(res);
     }
@@ -78,6 +78,11 @@ public class GeneralDriver extends Configured implements Tool {
         int round = 0;
         long start = TimeUnit.SECONDS.convert(System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 
+        /*
+        args[0]: inputpath
+        args[1]: outputpath
+        args[2]: NumLinesPerSplit
+         */
 
         String input = args[0];
         String output = args[1];
@@ -91,7 +96,7 @@ public class GeneralDriver extends Configured implements Tool {
 
 //            job.setInputFormatClass(TextInputFormat.class);
             job.setInputFormatClass(NLineInputFormat.class);
-            NLineInputFormat.setNumLinesPerSplit(job, 200);
+            NLineInputFormat.setNumLinesPerSplit(job, Integer.parseInt(args[2]));
             job.setOutputFormatClass(TextOutputFormat.class);
 
             job.setMapperClass(GeneralMap.class);
