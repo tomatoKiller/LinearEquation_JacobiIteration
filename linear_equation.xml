@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <algorithm_jar>LinearEquation.jar</algorithm_jar>
+    <input>
+        <filename>input/</filename>
+        <!--    <delimiter>,</delimiter> -->
+    </input>
+    <output>
+        <filename>output/</filename>
+    </output>
+</configuration>

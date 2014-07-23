@@ -1,0 +1,71 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="LinearEquation:jar">
+    <output-path>$PROJECT_DIR$/</output-path>
+    <root id="archive" name="LinearEquation.jar">
+      <element id="module-output" name="LinearEquation" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/hadoop/hadoop-core/0.20.2/hadoop-core-0.20.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mortbay/jetty/jetty/6.1.14/jetty-6.1.14.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-httpclient/commons-httpclient/3.0.1/commons-httpclient-3.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mortbay/jetty/jsp-2.1/6.1.14/jsp-2.1-6.1.14.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/hadoop-core-0.20.2-cdh3u6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.3/commons-codec-1.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mortbay/jetty/servlet-api-2.5/6.1.14/servlet-api-2.5-6.1.14.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/jdt/core/3.1.1/core-3.1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/tomcat/jasper-compiler/5.5.12/jasper-compiler-5.5.12.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/java/dev/jets3t/jets3t/0.7.1/jets3t-0.7.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-cli/commons-cli/1.2/commons-cli-1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/ant/ant/1.6.5/ant-1.6.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/oro/oro/2.0.8/oro-2.0.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-el/commons-el/1.0/commons-el-1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/log4j-1.2.15.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-net/commons-net/1.4.1/commons-net-1.4.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/asm-3.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/junit-4.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/kfs-0.2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/oro-2.0.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/core-3.1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/jsch-0.1.42.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/xmlenc-0.52.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/jets3t-0.6.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/commons-el-1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/commons-io-2.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/aspectjrt-1.6.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/commons-cli-1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/commons-net-3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/hsqldb-1.8.0.10.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/jersey-core-1.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/jersey-json-1.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/slf4j-api-1.4.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/commons-lang-2.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/guava-r09-jarjar.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/ant-contrib-1.0b3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/commons-codec-1.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/jersey-server-1.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/mockito-all-1.8.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/aspectjtools-1.6.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/slf4j-log4j12-1.4.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/commons-daemon-1.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/commons-logging-1.0.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/jasper-runtime-5.5.12.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/commons-httpclient-3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/jackson-core-asl-1.5.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/jasper-compiler-5.5.12.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/servlet-api-2.5-6.1.14.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/jetty-6.1.26.cloudera.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/jackson-mapper-asl-1.5.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/servlet-api-2.5-20081211.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/commons-logging-api-1.0.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/jetty-util-6.1.26.cloudera.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/hadoop-fairscheduler-0.20.2-cdh3u6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/opt/hadoop-0.20.2-cdh3u6/lib/jetty-servlet-tester-6.1.26.cloudera.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mortbay/jetty/jsp-api-2.1/6.1.14/jsp-api-2.1-6.1.14.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/sf/kosmosfs/kfs/0.3/kfs-0.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/tomcat/jasper-runtime/5.5.12/jasper-runtime-5.5.12.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.0.3/commons-logging-1.0.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mortbay/jetty/jetty-util/6.1.14/jetty-util-6.1.14.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/xmlenc/xmlenc/0.52/xmlenc-0.52.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Maven: xerces:xercesImpl:2.9.1" />
+    </root>
+  </artifact>
+</component>

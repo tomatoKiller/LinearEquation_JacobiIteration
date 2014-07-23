@@ -19,6 +19,13 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+
 import java.net.URI;
 import java.util.concurrent.TimeUnit;
 
@@ -29,10 +36,36 @@ enum PrecisionRequire {
 public class GeneralDriver extends Configured implements Tool {
 
     public static void main(String[] args) throws Exception {
-        int res = ToolRunner.run(new Configuration(), new GeneralDriver(), args);
+//        String ConfXml = GeneralDriver.class.getClassLoader().getResource("linear_equation.xml").getPath();
+//        int res = ToolRunner.run(new Configuration(), new GeneralDriver(), AnalyzeXml(ConfXml));
+        int res = ToolRunner.run(new Configuration(), new GeneralDriver(), AnalyzeXml("./linear_equation.xml"));
+
         System.exit(res);
     }
 
+    public static final Logger log = LogManager.getLogger(GeneralDriver.class);
+
+    /*
+    @return String[0]: inputPath    String[1]: outputPath
+     */
+    private static String[] AnalyzeXml(String xmlPath) {
+        SAXReader reader = new SAXReader();
+        Document document = null;
+        try {
+            document = reader.read(xmlPath);
+        } catch (DocumentException e) {
+            log.error(e.getMessage());
+            log.error("GeneralDriver job failed");
+            e.printStackTrace();
+        }
+        String[] ret = new String[2];
+        Element root = document.getRootElement();
+        Element input = root.element("input");
+        ret[0] = input.elementText("filename");
+        Element output = root.element("output");
+        ret[1] = output.elementText("filename");
+        return ret;
+    }
 
     @Override
     public int run(String[] args) throws Exception {
@@ -42,9 +75,14 @@ public class GeneralDriver extends Configured implements Tool {
         int round = 0;
         long start = TimeUnit.SECONDS.convert(System.currentTimeMillis(), TimeUnit.MILLISECONDS);
 
+
+        String input = args[0];
+        String output = args[1];
+
         while (true) {
 
-            Job job = new Job(getConf(), "LinearEquation"+round);
+            Configuration conf = getConf();
+            Job job = new Job(conf, "LinearEquation-"+round);
 
             job.setJarByClass(GeneralDriver.class);
 
@@ -62,14 +100,14 @@ public class GeneralDriver extends Configured implements Tool {
             job.setOutputKeyClass(NullWritable.class);
             job.setOutputValueClass(Text.class);
 
-            FileInputFormat.addInputPath(job, new Path("./input/coefficient"));
+            FileInputFormat.addInputPath(job, new Path(input + "coefficient/"));
 
             job.setNumReduceTasks(1);
 
             job.getConfiguration().setFloat("error", 0.05f);
 
 
-            Path outputDir = new Path("./output/round" + round);
+            Path outputDir = new Path(output + "round" + round);
 
             if (FileSystem.get(job.getConfiguration()).exists(outputDir))
                 FileSystem.get(job.getConfiguration()).delete(outputDir, true);
@@ -78,13 +116,13 @@ public class GeneralDriver extends Configured implements Tool {
 
             String inputX;
             if (round == 0){
-                inputX = "./input/unknownNum/unknownNum.txt";
+                inputX = input + "unknownNum/unknownNum.txt";
             } else {
-                inputX = "./output/round" + (round - 1) + "/part-r-00000";
+                inputX = output + "round" + (round - 1) + "/part-r-00000";
             }
 
             DistributedCache.addCacheFile(new URI(inputX), job.getConfiguration());
-            DistributedCache.addCacheFile(new URI("./input/bvector/bvector.txt"), job.getConfiguration());
+            DistributedCache.addCacheFile(new URI(input + "bvector/bvector.txt"), job.getConfiguration());
 
             if (!job.waitForCompletion(true))
                 throw new RuntimeException("job failed");

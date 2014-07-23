@@ -26,8 +26,17 @@
           <!--<version>2.2.0</version>-->
       <!--</dependency>-->
 
+      <dependency>
+          <groupId>dom4j</groupId>
+          <artifactId>dom4j</artifactId>
+          <version>20040902.021138</version>
+      </dependency>
 
-
+      <dependency>
+          <groupId>xerces</groupId>
+          <artifactId>xercesImpl</artifactId>
+          <version>2.9.1</version>
+      </dependency>
 
 
       <dependency>
