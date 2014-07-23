@@ -21,10 +21,10 @@ import org.apache.hadoop.util.ToolRunner;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
+//import org.dom4j.Document;
+////import org.dom4j.DocumentException;
+//import org.dom4j.Element;
+//import org.dom4j.io.SAXReader;
 
 import java.net.URI;
 import java.util.concurrent.TimeUnit;
@@ -49,21 +49,24 @@ public class GeneralDriver extends Configured implements Tool {
     @return String[0]: inputPath    String[1]: outputPath
      */
     private static String[] AnalyzeXml(String xmlPath) {
-        SAXReader reader = new SAXReader();
-        Document document = null;
-        try {
-            document = reader.read(xmlPath);
-        } catch (DocumentException e) {
-            log.error(e.getMessage());
-            log.error("GeneralDriver job failed");
-            e.printStackTrace();
-        }
-        String[] ret = new String[2];
-        Element root = document.getRootElement();
-        Element input = root.element("input");
-        ret[0] = input.elementText("filename");
-        Element output = root.element("output");
-        ret[1] = output.elementText("filename");
+          String[] ret = new String[2];
+        ret[0] = "hdfs://192.168.1.191:8020/algm_home/linear_equation/input/";
+        ret[1] = "hdfs://192.168.1.191:8020/algm_home/linear_equation/output/";
+//        SAXReader reader = new SAXReader();
+//        Document document = null;
+//        try {
+//            document = reader.read(xmlPath);
+//        } catch (Exception e) {
+//            log.error(e.getMessage());
+//            log.error("GeneralDriver job failed");
+//            e.printStackTrace();
+//        }
+
+//        Element root = document.getRootElement();
+//        Element input = root.element("input");
+//        ret[0] = input.elementText("filename");
+//        Element output = root.element("output");
+//        ret[1] = output.elementText("filename");
         return ret;
     }
 
@@ -86,9 +89,9 @@ public class GeneralDriver extends Configured implements Tool {
 
             job.setJarByClass(GeneralDriver.class);
 
-            job.setInputFormatClass(TextInputFormat.class);
-//            job.setInputFormatClass(NLineInputFormat.class);
-//            NLineInputFormat.setNumLinesPerSplit(job, 5);
+//            job.setInputFormatClass(TextInputFormat.class);
+            job.setInputFormatClass(NLineInputFormat.class);
+            NLineInputFormat.setNumLinesPerSplit(job, 200);
             job.setOutputFormatClass(TextOutputFormat.class);
 
             job.setMapperClass(GeneralMap.class);
@@ -132,6 +135,9 @@ public class GeneralDriver extends Configured implements Tool {
                 break;
 
             round++;
+            long now = TimeUnit.SECONDS.convert(System.currentTimeMillis(), TimeUnit.MILLISECONDS);
+            if (now - start > 5400)
+                System.exit(5);
 
         }
 

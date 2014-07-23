@@ -168,7 +168,7 @@ public class MaxEigenvalue {
         BufferedWriter bw = new BufferedWriter(new FileWriter("./input/coefficient/coefficient.txt"));
         Random rand = new Random(47);
 
-        int N = 20;
+        int N = 600;
 
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {

@@ -66,6 +66,7 @@
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mortbay/jetty/jetty-util/6.1.14/jetty-util-6.1.14.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/xmlenc/xmlenc/0.52/xmlenc-0.52.jar" path-in-jar="/" />
       <element id="library" level="project" name="Maven: xerces:xercesImpl:2.9.1" />
+      <element id="library" level="project" name="Maven: dom4j:dom4j:20040902.021138" />
     </root>
   </artifact>
 </component>
