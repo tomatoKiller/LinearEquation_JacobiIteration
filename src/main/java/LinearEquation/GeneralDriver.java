@@ -82,6 +82,7 @@ public class GeneralDriver extends Configured implements Tool {
         args[0]: inputpath
         args[1]: outputpath
         args[2]: NumLinesPerSplit
+        args[3]: precision
          */
 
         String input = args[0];
@@ -112,7 +113,7 @@ public class GeneralDriver extends Configured implements Tool {
 
             job.setNumReduceTasks(1);
 
-            job.getConfiguration().setFloat("error", 0.05f);
+            job.getConfiguration().setFloat("error", Float.parseFloat(args[3]));
 
 
             Path outputDir = new Path(output + "round" + round);
