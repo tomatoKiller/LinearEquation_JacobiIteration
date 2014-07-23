@@ -88,6 +88,10 @@ public class GeneralDriver extends Configured implements Tool {
         String input = args[0];
         String output = args[1];
 
+        //创建output文件夹
+        if (!FileSystem.get(getConf()).exists(new Path(output)))
+            FileSystem.get(getConf()).mkdirs(new Path(output));
+
         while (true) {
 
             Configuration conf = getConf();

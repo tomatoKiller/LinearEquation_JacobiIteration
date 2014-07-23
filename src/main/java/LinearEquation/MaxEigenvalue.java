@@ -164,11 +164,23 @@ public class MaxEigenvalue {
 
     public static void main(String[] args) throws IOException {
 
+        File tmpfile = new File("./input/coefficient");
+        if (!tmpfile.exists())
+            tmpfile.mkdir();
+
+        tmpfile = new File("./input/bvector");
+        if (!tmpfile.exists())
+            tmpfile.mkdir();
+
+        tmpfile = new File("./input/unknownNum");
+        if (!tmpfile.exists())
+            tmpfile.mkdir();
+
         //随即生成系数矩阵A
         BufferedWriter bw = new BufferedWriter(new FileWriter("./input/coefficient/coefficient.txt"));
         Random rand = new Random(47);
 
-        int N = 600;
+        int N = 20;
 
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
