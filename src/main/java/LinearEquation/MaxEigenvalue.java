@@ -1,3 +1,5 @@
+package LinearEquation;
+
 import java.io.*;
 import java.util.*;
 
@@ -13,7 +15,7 @@ public class MaxEigenvalue {
     private String  initialVector;
     private double ev;
 
-    public MaxEigenvalue(String coefficient, String initialVector, double precision, int maxIterNum) {
+    public MaxEigenvalue(String coefficient, String initialVector, double precision, int maxIterNum) throws IOException {
         this.precision = precision;
         this.maxIterNum = maxIterNum;
         this.coefficient = coefficient;
@@ -30,39 +32,67 @@ public class MaxEigenvalue {
         this.maxIterNum = i;
     }
 
-    public void ReadData() {
-        try {
-            BufferedReader rc = new BufferedReader(new FileReader(coefficient));
-            BufferedReader ri = new BufferedReader(new FileReader(initialVector));
+    public void ReadData() throws IOException {
 
-            String line;
-            int linenum = 0;
-            try {
-                //读取系数矩阵
-                while ((line = rc.readLine()) != null) {
-                    A.add(new ArrayList<Double>());
-                    String[] tmp = line.split(" ");
-                    for (int i=0; i < tmp.length;i++)
-                        A.get(linenum).add(Double.parseDouble(tmp[i]));
-                    ++linenum;
-                }
+        File tmpfile = new File("./input");
+        if (!tmpfile.exists())
+            tmpfile.mkdir();
 
-                //读取初始化向量
-                while ((line = ri.readLine()) != null) {
-                    X.add(Double.parseDouble(line));
-                }
+        tmpfile = new File(coefficient);
+        if (!tmpfile.exists())
+            tmpfile.mkdir();
 
-            }  finally {
-                if (ri != null || rc != null) {
-                    rc.close();
-                    ri.close();
-                }
+        tmpfile = new File(initialVector);
+        if (!tmpfile.exists())
+            tmpfile.mkdir();
 
-            }
+        tmpfile = new File("./input/unknownNum");
+        if (!tmpfile.exists())
+            tmpfile.mkdir();
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        int N = 100;
+
+        //随机生成向量b
+        BufferedWriter bx = null;
+        bx = new BufferedWriter(new FileWriter("./input/bvector/bvector.txt"));
+
+        for (int i = 0; i < N; i++) {
+            bx.write(String.valueOf(i/2.0));
+            bx.write("\n");
         }
+        bx.close();
+
+        //随即生成向量x
+        bx = new BufferedWriter(new FileWriter("./input/unknownNum/unknownNum.txt"));
+        for (int i = 0; i < N; i++) {
+            X.add((double)i);
+            bx.write(String.valueOf(i));
+            bx.write("\n");
+        }
+        bx.close();
+
+        //随即生成系数矩阵A
+        Random rand = new Random(47);
+
+        bx = new BufferedWriter(new FileWriter("./input/coefficient/coefficient.txt"));
+        for (int i = 0; i < N; i++) {
+            A.add(new ArrayList<Double>());
+            for (int j = 0; j < N; j++) {
+                if (i <= j) {
+                    double tmp = rand.nextDouble();
+                    A.get(i).add(tmp);
+                    bx.write(String.valueOf(tmp));
+                } else {
+                    A.get(i).add(A.get(j).get(i));
+                    bx.write(String.valueOf(A.get(j).get(i)));
+                }
+                bx.write(" ");
+            }
+            bx.write("\n");
+
+        }
+        bx.close();
+
     }
 
     private double getMax(List<Double> l) {
@@ -123,8 +153,8 @@ public class MaxEigenvalue {
 
             if (CheckError(X, newX)) {
                 double m = getMax(X);
-                for (double i : X)
-                    System.out.print(i/m + " ");
+//                for (double i : X)
+//                    System.out.print(i/m + " ");
                 return getMax(X);
             }
             else {
@@ -163,49 +193,6 @@ public class MaxEigenvalue {
     }
 
     public static void main(String[] args) throws IOException {
-
-        File tmpfile = new File("./input/coefficient");
-        if (!tmpfile.exists())
-            tmpfile.mkdir();
-
-        tmpfile = new File("./input/bvector");
-        if (!tmpfile.exists())
-            tmpfile.mkdir();
-
-        tmpfile = new File("./input/unknownNum");
-        if (!tmpfile.exists())
-            tmpfile.mkdir();
-
-        //随即生成系数矩阵A
-        BufferedWriter bw = new BufferedWriter(new FileWriter("./input/coefficient/coefficient.txt"));
-        Random rand = new Random(47);
-
-        int N = 20;
-
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                bw.write(String.valueOf(rand.nextDouble()));
-                bw.write(" ");
-            }
-            bw.write("\n");
-        }
-        bw.close();
-
-        //随机生成向量b
-        BufferedWriter bx = new BufferedWriter(new FileWriter("./input/bvector/bvector.txt"));
-        for (int i = 0; i < N; i++) {
-            bx.write(String.valueOf(i/2.0));
-            bx.write("\n");
-        }
-        bx.close();
-
-        //随即生成向量x
-        bx = new BufferedWriter(new FileWriter("./input/unknownNum/unknownNum.txt"));
-        for (int i = 0; i < N; i++) {
-            bx.write(String.valueOf(0));
-            bx.write("\n");
-        }
-        bx.close();
 
 
         MaxEigenvalue me = new MaxEigenvalue("./input/coefficient/coefficient.txt", "./input/bvector/bvector.txt", 0.1, 2000000);
