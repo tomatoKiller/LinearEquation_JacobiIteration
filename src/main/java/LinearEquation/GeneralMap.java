@@ -69,21 +69,19 @@ public class GeneralMap extends Mapper<Object, Text, Text, Text> {
             int line = Integer.parseInt(tmp[0]);
             String[] item = tmp[1].split(",");
             for (int i = 0; i < item.length; i++) {
-                //在矩阵A的基础上加上单位阵E
-                float e = 0f;
-                if (i+1 == line)
-                    e++;
-                a.add(Float.parseFloat(item[i]) + e);
+                a.add(Float.parseFloat(item[i]));
             }
 
             float sum = 0.0f;
-            for (int i = 0; i < a.size(); i++)
+            for (int i = 0; i < a.size(); i++) {
+                if (i == line - 1)
+                    continue;
                 sum += a.get(i) * x.get(i);
-
-            sum -= b.get(line - 1);
+            }
+            float Xi = (b.get(line - 1) - sum ) / a.get(line - 1);
 
             //将key全部设为'x'，统一由一个Reducer处理
-            String strs = String.valueOf(sum);
+            String strs = String.valueOf(Xi);
             context.write(new Text("x"), new Text(line-1 + ":" + strs));
 
         }

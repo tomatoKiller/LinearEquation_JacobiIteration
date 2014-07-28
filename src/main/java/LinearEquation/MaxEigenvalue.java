@@ -14,6 +14,7 @@ public class MaxEigenvalue {
     private String  coefficient;
     private String  initialVector;
     private double ev;
+    private int N;
 
     public MaxEigenvalue(String coefficient, String initialVector, double precision, int maxIterNum) throws IOException {
         this.precision = precision;
@@ -50,14 +51,14 @@ public class MaxEigenvalue {
         if (!tmpfile.exists())
             tmpfile.mkdir();
 
-        int N = 100;
+        N = 100;
 
         //随机生成向量b
         BufferedWriter bx = null;
         bx = new BufferedWriter(new FileWriter("./input/bvector/bvector.txt"));
 
         for (int i = 0; i < N; i++) {
-            bx.write(String.valueOf(i/2.0));
+            bx.write(String.valueOf(i/(double)N));
             bx.write("\n");
         }
         bx.close();
